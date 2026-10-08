@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Nexus</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      color: #f5f3ff;
+      background: radial-gradient(
+        ellipse at 20% 10%,
+        #292044 0%,
+        #0b0b16 65%
+      );
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 410px;
+      padding: 40px;
+      border-radius: 22px;
+      background: rgba(23, 21, 36, 0.94);
+      border: 1px solid #39334e;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 0.6s ease;
+    }
+
+    .logo {
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #7c3aed, #b76cf5);
+      color: white;
+      font-size: 27px;
+      font-weight: 800;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 25px;
+      letter-spacing: -0.8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #a49eb7;
+      font-size: 13px;
+      margin-top: 10px;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 9px;
+    }
+
+    label {
+      color: #cdc7dc;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .label-row a,
+    .register a {
+      font-size: 12px;
+      color: #b99afa;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper input {
+      width: 100%;
+      padding: 14px 16px;
+      background: #211e30;
+      border: 1px solid #413b55;
+      border-radius: 11px;
+      outline: none;
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .input-wrapper input::placeholder {
+      color: #797387;
+    }
+
+    .input-wrapper input:focus {
+      border-color: #9b79f7;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+    }
+
+    .input-wrapper input[type="password"] {
+      padding-right: 75px;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: none;
+      color: #bca5ec;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 4px;
+    }
+
+    .remember input {
+      accent-color: #8b5cf6;
+      width: 15px;
+      height: 15px;
+    }
+
+    .remember label {
+      color: #aaa3bc;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 15px;
+      margin-top: 27px;
+      background: linear-gradient(110deg, #7c3aed, #a855f7);
+      border: none;
+      border-radius: 11px;
+      color: white;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(124, 58, 237, 0.35);
+    }
+
+    .login-btn:active {
+      transform: translateY(0);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 26px 0;
+      color: #8b849c;
+      font-size: 12px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #383248;
+    }
+
+    .google-btn {
+      width: 100%;
+      padding: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      background: transparent;
+      border: 1px solid #484158;
+      border-radius: 11px;
+      color: #e7e2f3;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .google-btn:hover {
+      background: #262237;
+    }
+
+    .google-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .register {
+      margin-top: 29px;
+      text-align: center;
+      color: #9f98b1;
+      font-size: 12px;
+    }
+
+    .register a {
+      font-weight: 600;
+    }
+
+    #message {
+      margin-top: 12px;
+      text-align: center;
+      color: #c4b5fd;
+      font-size: 12px;
+      min-height: 16px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .login-card {
+        padding: 30px 24px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="login-card">
+
+    <div class="logo">N</div>
+
+    <h1>Bem-vindo de volta</h1>
+
+    <p class="subtitle">
+      Entre com suas credenciais para continuar
+    </p>
+
+    <form id="loginForm">
+
+      <div class="form-group">
+        <div class="label-row">
+          <label for="email">E-mail</label>
+        </div>
+
+        <div class="input-wrapper">
+          <input
+            type="email"
+            id="email"
+            placeholder="seu@email.com"
+            autocomplete="email"
+            required
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="label-row">
+          <label for="password">Senha</label>
+          <a href="#" id="forgotLink">Esqueceu a senha?</a>
+        </div>
+
+        <div class="input-wrapper">
+          <input
+            type="password"
+            id="password"
+            placeholder="Digite sua senha"
+            autocomplete="current-password"
+            minlength="6"
+            required
+          >
+
+          <button
+            class="toggle-password"
+            id="togglePassword"
+            type="button"
+          >
+            Mostrar
+          </button>
+        </div>
+      </div>
+
+      <div class="remember">
+        <input type="checkbox" id="remember">
+        <label for="remember">Lembrar de mim</label>
+      </div>
+
+      <button class="login-btn" type="submit">
+        Entrar &rarr;
+      </button>
+
+      <p id="message" role="status" aria-live="polite"></p>
+    </form>
+
+    <div class="divider">OU</div>
+
+    <button class="google-btn" id="googleBtn" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="#4285F4" d="M21.35 12.23c0-.71-.06-1.39-.18-2.05H12v3.86h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.13c1.83-1.69 2.92-4.17 2.92-7.2Z"/>
+        <path fill="#34A853" d="M12 21.5c2.63 0 4.84-.87 6.45-2.36l-3.13-2.45c-.87.59-1.98.94-3.32.94a5.98 5.98 0 0 1-5.62-4.15H3.14v2.52A9.5 9.5 0 0 0 12 21.5Z"/>
+        <path fill="#FBBC05" d="M6.38 13.48a5.7 5.7 0 0 1 0-3.01V7.95H3.14a9.51 9.51 0 0 0 0 8.05l3.24-2.52Z"/>
+        <path fill="#EA4335" d="M12 6.35c1.43 0 2.71.49 3.72 1.46l2.8-2.79A9.1 9.1 0 0 0 12 2.5a9.5 9.5 0 0 0-8.86 5.45l3.24 2.52A5.98 5.98 0 0 1 12 6.35Z"/>
+      </svg>
+
+      Continuar com Google
+    </button>
+
+    <p class="register">
+      Não tem uma conta?
+      <a href="#" id="registerLink">Cadastre-se</a>
+    </p>
+
+  </main>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const password = document.getElementById("password");
+    const toggle = document.getElementById("togglePassword");
+    const message = document.getElementById("message");
+
+    toggle.addEventListener("click", () => {
+      const hidden = password.type === "password";
+
+      password.type = hidden ? "text" : "password";
+      toggle.textContent = hidden ? "Ocultar" : "Mostrar";
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      message.textContent =
+        "Formulário validado! Conecte um backend para autenticar.";
+    });
+
+    document.getElementById("googleBtn")
+      .addEventListener("click", () => {
+        message.textContent =
+          "Configure OAuth para ativar o login com Google.";
+      });
+
+    document.querySelectorAll(
+      "#forgotLink, #registerLink"
+    ).forEach(link => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        message.textContent =
+          "Esta funcionalidade precisa ser implementada.";
+      });
+    });
+  </script>
+
+</body>
+</html>
