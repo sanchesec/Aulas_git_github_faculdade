@@ -1,0 +1,383 @@
+
+<style>
+  .aura-signup * {
+    box-sizing: border-box;
+  }
+
+  .aura-signup {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 16px;
+    background: radial-gradient(
+      ellipse at 20% 0%,
+      #292044,
+      #0b0b16 70%
+    );
+    color: #f5f3ff;
+  }
+
+  .aura-signup .card {
+    width: 100%;
+    max-width: 430px;
+    padding: 36px;
+    border-radius: 22px;
+    background: #171524;
+    border: 1px solid #39334e;
+    box-shadow: 0 24px 65px #0006;
+    animation: auraFade 0.6s ease;
+  }
+
+  .aura-signup .logo {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 20px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #7c3aed, #b76cf5);
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .aura-signup h1 {
+    margin: 0;
+    font-size: 26px;
+    text-align: center;
+    letter-spacing: -0.6px;
+  }
+
+  .aura-signup .subtitle {
+    color: #aaa3bc;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 10px 0 28px;
+  }
+
+  .aura-signup .field-group {
+    margin-bottom: 18px;
+  }
+
+  .aura-signup label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #d4cede;
+  }
+
+  .aura-signup input:not([type="checkbox"]),
+  .aura-signup select {
+    display: block;
+    width: 100%;
+    height: 46px;
+    min-width: 0;
+    padding: 0 14px;
+    border: 1px solid #413b55;
+    border-radius: 10px;
+    background: #211e30;
+    color: #fff;
+    font-size: 13px;
+    outline: none;
+    transition: 0.2s;
+  }
+
+  .aura-signup input:focus,
+  .aura-signup select:focus {
+    border-color: #9b79f7;
+    box-shadow: 0 0 0 3px #7c3aed20;
+  }
+
+  .aura-signup input::placeholder {
+    color: #817a91;
+  }
+
+  .aura-signup .grid-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .aura-signup .password-wrap {
+    position: relative;
+  }
+
+  .aura-signup .password-wrap input {
+    padding-right: 72px;
+  }
+
+  .aura-signup .show-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #b99afa;
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  .aura-signup .terms {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .aura-signup .terms input {
+    margin-top: 2px;
+    accent-color: #8b5cf6;
+  }
+
+  .aura-signup .terms label {
+    color: #a9a2ba;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .aura-signup .submit-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 11px;
+    background: linear-gradient(110deg, #7c3aed, #a855f7);
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .aura-signup .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px #7c3aed50;
+  }
+
+  .aura-signup .bottom {
+    text-align: center;
+    margin-top: 24px;
+    color: #9f98b1;
+    font-size: 12px;
+  }
+
+  .aura-signup a {
+    color: #b99afa;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .aura-signup a:hover {
+    text-decoration: underline;
+  }
+
+  .aura-signup #signup-message {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 12px;
+    min-height: 16px;
+    color: #c4b5fd;
+  }
+
+  @keyframes auraFade {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .aura-signup .card {
+      padding: 28px 22px;
+    }
+
+    .aura-signup h1 {
+      font-size: 23px;
+    }
+  }
+</style>
+
+<div class="aura-signup">
+  <div class="card">
+
+    <div class="logo">A</div>
+
+    <h1>Crie sua conta</h1>
+
+    <p class="subtitle">
+      Comece sua experiência no Aura Smart Apartment
+    </p>
+
+    <form id="aura-register-form">
+
+      <div class="field-group">
+        <label for="reg-name">Nome completo</label>
+        <input
+          id="reg-name"
+          type="text"
+          placeholder="Seu nome completo"
+          autocomplete="name"
+          required
+        >
+      </div>
+
+      <div class="field-group">
+        <label for="reg-email">E-mail</label>
+        <input
+          id="reg-email"
+          type="email"
+          placeholder="seu@email.com"
+          autocomplete="email"
+          required
+        >
+      </div>
+
+      <div class="grid-fields">
+
+        <div class="field-group">
+          <label for="reg-tower">Torre</label>
+          <select id="reg-tower" required>
+            <option value="">Selecione</option>
+            <option value="A">Torre A</option>
+            <option value="B">Torre B</option>
+            <option value="C">Torre C</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="reg-apartment">Apartamento</label>
+          <input
+            id="reg-apartment"
+            type="text"
+            placeholder="Ex.: 204"
+            maxlength="8"
+            required
+          >
+        </div>
+
+      </div>
+
+      <div class="field-group">
+        <label for="reg-password">Senha</label>
+
+        <div class="password-wrap">
+          <input
+            id="reg-password"
+            type="password"
+            placeholder="Mínimo de 8 caracteres"
+            autocomplete="new-password"
+            minlength="8"
+            required
+          >
+
+          <button
+            type="button"
+            class="show-password"
+            data-target="reg-password"
+          >
+            Mostrar
+          </button>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="reg-confirm">Confirmar senha</label>
+
+        <div class="password-wrap">
+          <input
+            id="reg-confirm"
+            type="password"
+            placeholder="Repita sua senha"
+            autocomplete="new-password"
+            minlength="8"
+            required
+          >
+
+          <button
+            type="button"
+            class="show-password"
+            data-target="reg-confirm"
+          >
+            Mostrar
+          </button>
+        </div>
+      </div>
+
+      <div class="terms">
+        <input id="reg-terms" type="checkbox" required>
+
+        <label for="reg-terms">
+          Concordo com os termos de uso e a
+          política de privacidade.
+        </label>
+      </div>
+
+      <button class="submit-btn" type="submit">
+        Criar minha conta &rarr;
+      </button>
+
+      <p id="signup-message" role="status"></p>
+
+    </form>
+
+    <div class="bottom">
+      Já tem uma conta?
+      <a href="login">Entrar</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  (function () {
+    const form = document.getElementById("aura-register-form");
+    const message = document.getElementById("signup-message");
+
+    document.querySelectorAll(
+      ".aura-signup .show-password"
+    ).forEach(button => {
+      button.addEventListener("click", () => {
+        const target = document.getElementById(
+          button.dataset.target
+        );
+
+        const showing = target.type === "password";
+
+        target.type = showing ? "text" : "password";
+        button.textContent = showing ? "Ocultar" : "Mostrar";
+      });
+    });
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const password = document.getElementById(
+        "reg-password"
+      ).value;
+
+      const confirm = document.getElementById(
+        "reg-confirm"
+      ).value;
+
+      if (password !== confirm) {
+        message.textContent = "As senhas não coincidem.";
+        message.style.color = "#fca5a5";
+        return;
+      }
+
+      message.style.color = "#c4b5fd";
+      message.textContent =
+        "Dados válidos! Conecte o cadastro ao Bubble.";
+    });
+  })();
+</script>
