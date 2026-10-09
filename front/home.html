@@ -1,0 +1,1179 @@
+
+<style>
+  #aura-home {
+    --bg: #0c0b16;
+    --surface: #181624;
+    --border: #322b45;
+    --purple: #8b5cf6;
+    --text: #f4f1ff;
+    --muted: #aaa3bd;
+
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 235px minmax(0, 1fr);
+  }
+
+  #aura-home * {
+    box-sizing: border-box;
+  }
+
+  #aura-home button,
+  #aura-home input,
+  #aura-home select,
+  #aura-home textarea {
+    font: inherit;
+  }
+
+  #aura-home button {
+    cursor: pointer;
+  }
+
+  #aura-home a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  #aura-home .sidebar {
+    padding: 28px 16px;
+    background: #141220;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #aura-home .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 10px;
+    margin-bottom: 38px;
+  }
+
+  #aura-home .brand-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #7c3aed, #b76cf5);
+  }
+
+  #aura-home .brand-name {
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size: 18px;
+  }
+
+  #aura-home .brand-small {
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  #aura-home .nav-title {
+    font-size: 10px;
+    font-weight: bold;
+    color: #777087;
+    padding: 0 12px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  #aura-home .nav-link {
+    padding: 14px 15px;
+    border-radius: 11px;
+    color: #aaa3bd;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    transition: 0.2s;
+  }
+
+  #aura-home .nav-link:hover,
+  #aura-home .nav-link.active {
+    background: #302344;
+    color: #d9c8ff;
+  }
+
+  #aura-home .nav-icon {
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+  }
+
+  #aura-home .sidebar-footer {
+    margin-top: auto;
+    background: #201b30;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 15px;
+  }
+
+  #aura-home .sidebar-footer strong {
+    font-size: 13px;
+  }
+
+  #aura-home .sidebar-footer p {
+    color: var(--muted);
+    font-size: 11px;
+    margin: 6px 0 0;
+  }
+
+  #aura-home .main {
+    min-width: 0;
+    padding: 34px;
+    background: radial-gradient(
+      ellipse at 80% 0%,
+      #211738 0%,
+      #0c0b16 60%
+    );
+  }
+
+  #aura-home .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  #aura-home .eyebrow {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  #aura-home h1 {
+    font-size: 26px;
+    margin: 7px 0 0;
+  }
+
+  #aura-home .profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  #aura-home .avatar {
+    width: 39px;
+    height: 39px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #3a2855;
+    color: #ceb1ff;
+    font-weight: bold;
+  }
+
+  #aura-home .hero {
+    background: linear-gradient(115deg, #6330b5, #30205e);
+    border: 1px solid #714fa7;
+    border-radius: 20px;
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #aura-home .hero::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    right: -65px;
+    top: -85px;
+    border: 38px solid #ffffff0c;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  #aura-home .hero-tag {
+    color: #ddd0ff;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+  }
+
+  #aura-home .hero h2 {
+    font-size: 30px;
+    margin: 15px 0 10px;
+  }
+
+  #aura-home .hero p {
+    color: #e1d7f9;
+    max-width: 440px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  #aura-home .primary-btn {
+    background: #f7f2ff;
+    color: #4c258b;
+    border: none;
+    padding: 13px 18px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 20px;
+    transition: 0.2s;
+  }
+
+  #aura-home .primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px #10072440;
+  }
+
+  #aura-home .stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 22px;
+  }
+
+  #aura-home .stat,
+  #aura-home .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+  }
+
+  #aura-home .stat {
+    padding: 23px;
+  }
+
+  #aura-home .stat-label {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  #aura-home .stat-value {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 14px;
+  }
+
+  #aura-home .stat-desc {
+    color: #a59ab9;
+    font-size: 11px;
+    margin-top: 5px;
+  }
+
+  #aura-home .section-heading {
+    margin: 33px 0 16px;
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  #aura-home .actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  #aura-home .action-card {
+    text-align: left;
+    padding: 21px;
+    background: #1b172b;
+    border: 1px solid #392d51;
+    border-radius: 15px;
+    color: var(--text);
+    transition: 0.2s;
+  }
+
+  #aura-home .action-card:hover {
+    border-color: #9564f0;
+    transform: translateY(-3px);
+    background: #241a39;
+  }
+
+  #aura-home .action-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #392650;
+    color: #c9a8ff;
+    font-size: 22px;
+    margin-bottom: 17px;
+  }
+
+  #aura-home .action-card strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 7px;
+  }
+
+  #aura-home .action-card span:last-child {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  #aura-home .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 24px;
+  }
+
+  #aura-home .panel {
+    padding: 23px;
+    min-width: 0;
+    scroll-margin-top: 20px;
+  }
+
+  #aura-home .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  #aura-home .panel-title {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  #aura-home .text-link {
+    background: none;
+    border: 0;
+    color: #b99afa;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  #aura-home .entry {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 0;
+    border-bottom: 1px solid #302b3e;
+  }
+
+  #aura-home .entry:last-child {
+    border-bottom: 0;
+  }
+
+  #aura-home .entry-icon {
+    width: 39px;
+    height: 39px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: #322443;
+    color: #c5a7ff;
+    flex-shrink: 0;
+  }
+
+  #aura-home .entry-body {
+    min-width: 0;
+    flex: 1;
+  }
+
+  #aura-home .entry-name {
+    font-size: 13px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+  }
+
+  #aura-home .entry-info {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  #aura-home .status {
+    border-radius: 50px;
+    padding: 6px 9px;
+    color: #70dba8;
+    background: #153629;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  #aura-home .status.pending {
+    color: #f2c177;
+    background: #3a2a1a;
+  }
+
+  #aura-home .unit {
+    margin-top: 18px;
+  }
+
+  #aura-home .unit-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 17px;
+  }
+
+  #aura-home .unit-detail {
+    padding: 14px;
+    background: #211d30;
+    border-radius: 10px;
+  }
+
+  #aura-home .unit-detail small {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+
+  #aura-home .unit-detail strong {
+    font-size: 13px;
+  }
+
+  /* Modal demonstrativo */
+
+  #aura-home .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #05030aca;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  #aura-home .overlay[hidden] {
+    display: none;
+  }
+
+  #aura-home .modal {
+    width: 100%;
+    max-width: 420px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 18px;
+    padding: 28px;
+    background: #1b182b;
+    border: 1px solid #4a3b63;
+  }
+
+  #aura-home .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+  }
+
+  #aura-home .modal h3 {
+    margin: 0;
+    font-size: 19px;
+  }
+
+  #aura-home .close-modal {
+    color: #c9c1d8;
+    border: none;
+    background: none;
+    font-size: 26px;
+  }
+
+  #aura-home .form-group {
+    margin-bottom: 17px;
+  }
+
+  #aura-home .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #d7d0e5;
+  }
+
+  #aura-home .form-group input,
+  #aura-home .form-group select,
+  #aura-home .form-group textarea {
+    width: 100%;
+    background: #262137;
+    border: 1px solid #4c425f;
+    border-radius: 10px;
+    padding: 12px;
+    color: white;
+    outline: none;
+  }
+
+  #aura-home .form-group input:focus,
+  #aura-home .form-group textarea:focus {
+    border-color: #a78bfa;
+  }
+
+  #aura-home .form-submit {
+    width: 100%;
+    padding: 14px;
+    border: 0;
+    border-radius: 10px;
+    background: linear-gradient(110deg, #7c3aed, #a855f7);
+    color: white;
+    font-weight: bold;
+  }
+
+  #aura-home .toast {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    z-index: 100000;
+    max-width: 360px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    background: #312348;
+    border: 1px solid #8b5cf6;
+    color: white;
+    font-size: 12px;
+    line-height: 1.6;
+    box-shadow: 0 10px 30px #0008;
+  }
+
+  #aura-home .toast[hidden] {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    #aura-home {
+      grid-template-columns: 1fr;
+    }
+
+    #aura-home .sidebar {
+      flex-direction: row;
+      align-items: center;
+      overflow-x: auto;
+      padding: 12px;
+    }
+
+    #aura-home .brand {
+      margin: 0 18px 0 0;
+      flex-shrink: 0;
+    }
+
+    #aura-home .brand-small,
+    #aura-home .nav-title,
+    #aura-home .sidebar-footer {
+      display: none;
+    }
+
+    #aura-home .nav-link {
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #aura-home .main {
+      padding: 20px 15px;
+    }
+
+    #aura-home h1 {
+      font-size: 22px;
+    }
+
+    #aura-home .hero {
+      padding: 24px;
+    }
+
+    #aura-home .hero h2 {
+      font-size: 25px;
+    }
+
+    #aura-home .stats {
+      gap: 8px;
+    }
+
+    #aura-home .stat {
+      padding: 13px;
+    }
+
+    #aura-home .stat-value {
+      font-size: 22px;
+    }
+
+    #aura-home .actions,
+    #aura-home .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    #aura-home .unit-details {
+      grid-template-columns: 1fr;
+    }
+
+    #aura-home .profile-name {
+      display: none;
+    }
+
+    #aura-home .panel {
+      padding: 18px;
+    }
+  }
+</style>
+
+<div id="aura-home">
+
+  <!-- MENU LATERAL -->
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="brand-icon">A</div>
+      <div>
+        <div class="brand-name">AURA</div>
+        <div class="brand-small">SMART APARTMENT</div>
+      </div>
+    </div>
+
+    <div class="nav-title">MENU PRINCIPAL</div>
+
+    <a class="nav-link active" href="#aura-inicio">
+      <span class="nav-icon">⌂</span> Visão geral
+    </a>
+
+    <a class="nav-link" href="#aura-visitantes">
+      <span class="nav-icon">♙</span> Visitantes
+    </a>
+
+    <a class="nav-link" href="#aura-solicitacoes">
+      <span class="nav-icon">⚒</span> Solicitações
+    </a>
+
+    <a class="nav-link" href="#aura-avisos">
+      <span class="nav-icon">◉</span> Comunicados
+    </a>
+
+    <a class="nav-link" href="#aura-unidade">
+      <span class="nav-icon">▣</span> Minha unidade
+    </a>
+
+    <div class="sidebar-footer">
+      <strong>Minha residência</strong>
+      <p>Torre A • Apartamento 204</p>
+    </div>
+
+  </aside>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="main" id="aura-inicio">
+
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">Painel do morador</div>
+        <h1>Visão geral</h1>
+      </div>
+
+      <div class="profile">
+        <div class="avatar">M</div>
+        <span class="profile-name">Morador(a)</span>
+      </div>
+    </header>
+
+    <!-- BOAS-VINDAS -->
+    <section class="hero">
+      <div class="hero-tag">SEU ESPAÇO, MAIS INTELIGENTE</div>
+
+      <h2>Bem-vindo ao Aura.</h2>
+
+      <p>
+        Gerencie sua unidade, autorize visitantes,
+        acompanhe solicitações e fique por dentro
+        de tudo que acontece no condomínio.
+      </p>
+
+      <button
+        type="button"
+        class="primary-btn"
+        data-open="visitor"
+      >
+        + Autorizar visitante
+      </button>
+    </section>
+
+    <!-- INDICADORES -->
+    <section class="stats">
+
+      <div class="stat">
+        <div class="stat-label">Visitantes autorizados</div>
+        <div class="stat-value" id="visitor-count">02</div>
+        <div class="stat-desc">Autorizações recentes</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-label">Solicitações abertas</div>
+        <div class="stat-value" id="request-count">01</div>
+        <div class="stat-desc">Aguardando conclusão</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-label">Comunicados</div>
+        <div class="stat-value">03</div>
+        <div class="stat-desc">Avisos disponíveis</div>
+      </div>
+
+    </section>
+
+    <!-- AÇÕES RÁPIDAS -->
+    <h2 class="section-heading">Acesso rápido</h2>
+
+    <section class="actions">
+
+      <button
+        type="button"
+        class="action-card"
+        data-open="visitor"
+      >
+        <div class="action-icon">♙</div>
+        <strong>Autorizar visitante</strong>
+        <span>
+          Registre a entrada de uma visita.
+        </span>
+      </button>
+
+      <button
+        type="button"
+        class="action-card"
+        data-open="request"
+      >
+        <div class="action-icon">⚒</div>
+        <strong>Abrir solicitação</strong>
+        <span>
+          Comunique problemas ou peça manutenção.
+        </span>
+      </button>
+
+      <a class="action-card" href="#aura-avisos">
+        <div class="action-icon">◉</div>
+        <strong>Ver comunicados</strong>
+        <span>
+          Confira as novidades do condomínio.
+        </span>
+      </a>
+
+    </section>
+
+    <!-- INFORMAÇÕES -->
+    <section class="content-grid">
+
+      <!-- VISITANTES -->
+      <div class="panel" id="aura-visitantes">
+
+        <div class="panel-header">
+          <div class="panel-title">Acesso de visitantes</div>
+          <button
+            type="button"
+            class="text-link"
+            data-open="visitor"
+          >
+            + Novo
+          </button>
+        </div>
+
+        <div id="visitor-list">
+
+          <div class="entry">
+            <div class="entry-icon">♙</div>
+
+            <div class="entry-body">
+              <div class="entry-name">Ana Souza</div>
+              <div class="entry-info">Hoje • 18:00</div>
+            </div>
+
+            <span class="status">Autorizado</span>
+          </div>
+
+          <div class="entry">
+            <div class="entry-icon">♙</div>
+
+            <div class="entry-body">
+              <div class="entry-name">Carlos Lima</div>
+              <div class="entry-info">Amanhã • 10:30</div>
+            </div>
+
+            <span class="status">Autorizado</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- COMUNICADOS -->
+      <div class="panel" id="aura-avisos">
+
+        <div class="panel-header">
+          <div class="panel-title">Últimos comunicados</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-icon">◉</div>
+          <div class="entry-body">
+            <div class="entry-name">
+              Manutenção do elevador
+            </div>
+            <div class="entry-info">
+              Aviso da administração
+            </div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-icon">▤</div>
+          <div class="entry-body">
+            <div class="entry-name">
+              Assembleia condominial
+            </div>
+            <div class="entry-info">
+              Novo comunicado
+            </div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-icon">◉</div>
+          <div class="entry-body">
+            <div class="entry-name">
+              Atualização das regras de acesso
+            </div>
+            <div class="entry-info">
+              Informação aos moradores
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SOLICITAÇÕES -->
+    <section class="panel unit" id="aura-solicitacoes">
+
+      <div class="panel-header">
+        <div class="panel-title">Minhas solicitações</div>
+
+        <button
+          type="button"
+          class="text-link"
+          data-open="request"
+        >
+          + Nova solicitação
+        </button>
+      </div>
+
+      <div id="request-list">
+        <div class="entry">
+          <div class="entry-icon">⚒</div>
+
+          <div class="entry-body">
+            <div class="entry-name">
+              Lâmpada do corredor
+            </div>
+            <div class="entry-info">
+              Manutenção • Solicitação em análise
+            </div>
+          </div>
+
+          <span class="status pending">Em análise</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- UNIDADE -->
+    <section class="panel unit" id="aura-unidade">
+
+      <div class="panel-title">Minha unidade</div>
+
+      <div class="unit-details">
+
+        <div class="unit-detail">
+          <small>Condomínio</small>
+          <strong>Aura Smart Apartment</strong>
+        </div>
+
+        <div class="unit-detail">
+          <small>Torre</small>
+          <strong>Torre A</strong>
+        </div>
+
+        <div class="unit-detail">
+          <small>Apartamento</small>
+          <strong>204</strong>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- MODAL DE VISITANTES -->
+  <div class="overlay" id="visitor-modal" hidden>
+    <div
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="visitor-modal-title"
+    >
+      <div class="modal-header">
+        <h3 id="visitor-modal-title">Autorizar visitante</h3>
+
+        <button
+          type="button"
+          class="close-modal"
+          data-close
+          aria-label="Fechar"
+        >×</button>
+      </div>
+
+      <form id="visitor-form">
+
+        <div class="form-group">
+          <label for="visitor-name">Nome completo</label>
+          <input
+            id="visitor-name"
+            type="text"
+            placeholder="Nome do visitante"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="visitor-date">Data da visita</label>
+          <input
+            id="visitor-date"
+            type="date"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="visitor-time">Horário previsto</label>
+          <input
+            id="visitor-time"
+            type="time"
+            required
+          >
+        </div>
+
+        <button class="form-submit" type="submit">
+          Registrar autorização
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL DE SOLICITAÇÃO -->
+  <div class="overlay" id="request-modal" hidden>
+    <div
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="request-modal-title"
+    >
+      <div class="modal-header">
+        <h3 id="request-modal-title">Nova solicitação</h3>
+
+        <button
+          type="button"
+          class="close-modal"
+          data-close
+          aria-label="Fechar"
+        >×</button>
+      </div>
+
+      <form id="request-form">
+
+        <div class="form-group">
+          <label for="request-type">Categoria</label>
+          <select id="request-type" required>
+            <option value="">Selecione</option>
+            <option>Manutenção</option>
+            <option>Limpeza</option>
+            <option>Segurança</option>
+            <option>Outros</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="request-description">Descrição</label>
+          <textarea
+            id="request-description"
+            rows="4"
+            placeholder="Descreva sua solicitação..."
+            required
+          ></textarea>
+        </div>
+
+        <button class="form-submit" type="submit">
+          Enviar solicitação
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="aura-toast" role="status" hidden></div>
+
+</div>
+
+<script>
+(function () {
+  const root = document.getElementById("aura-home");
+
+  if (!root || root.dataset.initialized === "true") return;
+
+  root.dataset.initialized = "true";
+
+  const visitorModal = root.querySelector("#visitor-modal");
+  const requestModal = root.querySelector("#request-modal");
+  const toast = root.querySelector("#aura-toast");
+
+  let visitorCount = 2;
+  let requestCount = 1;
+
+  function openModal(type) {
+    const modal = type === "visitor"
+      ? visitorModal
+      : requestModal;
+
+    modal.hidden = false;
+    modal.querySelector("input, select")?.focus();
+  }
+
+  function closeModals() {
+    visitorModal.hidden = true;
+    requestModal.hidden = true;
+  }
+
+  function showMessage(text) {
+    toast.textContent = text;
+    toast.hidden = false;
+
+    // A mensagem pode ser fechada clicando nela.
+  }
+
+  toast.addEventListener("click", () => {
+    toast.hidden = true;
+  });
+
+  root.querySelectorAll("[data-open]").forEach(button => {
+    button.addEventListener("click", () => {
+      openModal(button.dataset.open);
+    });
+  });
+
+  root.querySelectorAll("[data-close]").forEach(button => {
+    button.addEventListener("click", closeModals);
+  });
+
+  [visitorModal, requestModal].forEach(modal => {
+    modal.addEventListener("click", event => {
+      if (event.target === modal) closeModals();
+    });
+  });
+
+  root.addEventListener("keydown", event => {
+    if (event.key === "Escape") closeModals();
+  });
+
+  // Monta uma linha sem inserir HTML fornecido pelo usuário.
+  function addEntry(listId, icon, title, subtitle, status) {
+    const list = root.querySelector("#" + listId);
+
+    const entry = document.createElement("div");
+    entry.className = "entry";
+
+    const iconElement = document.createElement("div");
+    iconElement.className = "entry-icon";
+    iconElement.textContent = icon;
+
+    const body = document.createElement("div");
+    body.className = "entry-body";
+
+    const name = document.createElement("div");
+    name.className = "entry-name";
+    name.textContent = title;
+
+    const info = document.createElement("div");
+    info.className = "entry-info";
+    info.textContent = subtitle;
+
+    const badge = document.createElement("span");
+    badge.className = "status";
+    badge.textContent = status;
+
+    body.append(name, info);
+    entry.append(iconElement, body, badge);
+    list.prepend(entry);
+  }
+
+  root.querySelector("#visitor-form")
+    .addEventListener("submit", event => {
+      event.preventDefault();
+
+      const name = root.querySelector("#visitor-name").value.trim();
+      const date = root.querySelector("#visitor-date").value;
+      const time = root.querySelector("#visitor-time").value;
+
+      if (!name || !date || !time) return;
+
+      addEntry(
+        "visitor-list",
+        "♙",
+        name,
+        date.split("-").reverse().join("/") + " • " + time,
+        "Prévia"
+      );
+
+      visitorCount++;
+
+      root.querySelector("#visitor-count").textContent =
+        String(visitorCount).padStart(2, "0");
+
+      closeModals();
+      event.target.reset();
+
+      showMessage(
+        "Visitante adicionado à prévia. " +
+        "Conecte ao Bubble para salvar de verdade."
+      );
+    });
+
+  root.querySelector("#request-form")
+    .addEventListener("submit", event => {
+      event.preventDefault();
+
+      const type = root.querySelector("#request-type").value;
+      const description = root.querySelector(
+        "#request-description"
+      ).value.trim();
+
+      if (!type || !description) return;
+
+      addEntry(
+        "request-list",
+        "⚒",
+        description,
+        type + " • Solicitação demonstrativa",
+        "Prévia"
+      );
+
+      requestCount++;
+
+      root.querySelector("#request-count").textContent =
+        String(requestCount).padStart(2, "0");
+
+      closeModals();
+      event.target.reset();
+
+      showMessage(
+        "Solicitação adicionada à prévia. " +
+        "Os dados ainda não foram enviados ao Bubble."
+      );
+    });
+
+})();
+</script>
